@@ -8,6 +8,7 @@ public interface TeacherDAO {
     void AddTeacher(Teacher teacher);
     void DeleteTeacher(int id);
     void UpdateTeacher(Teacher teacher);
+    void ChooseTeacher(Teacher teacher);
     int GetMaxID();
     void SortById();
     void SortByTeacherName();

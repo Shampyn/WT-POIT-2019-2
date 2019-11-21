@@ -15,9 +15,11 @@ public class XMLStudentDAO implements StudentDAO {
 
     private static String filepath = "Students.xml";
     private List<Student> studentsList;
+    private Student LoggedinStudent;
+
 
     public  XMLStudentDAO(){
-        studentsList = new ArrayList<Student>();
+        studentsList = new ArrayList<>();
         if(new File(filepath).exists()){
             try{
                 LoadStudentsFromFile();
@@ -79,6 +81,11 @@ public class XMLStudentDAO implements StudentDAO {
             }
         }
         SaveStudentsToFile();
+    }
+
+    @Override
+    public void ChooseStudent(Student student) {
+        LoggedinStudent = student;
     }
 
     @Override

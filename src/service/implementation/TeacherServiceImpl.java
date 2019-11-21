@@ -27,6 +27,11 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
+    public void ChooseTeacher(Teacher teacher) {
+        teacherDAO.ChooseTeacher(teacher);
+    }
+
+    @Override
     public int GetMaxID() {
         return teacherDAO.GetMaxID();
     }

@@ -8,6 +8,7 @@ public interface StudentService {
     void AddStudent(Student student);
     void DeleteStudent(int id);
     void UpdateStudent(Student student);
+    void ChooseStudent(Student student);
     int GetMaxID();
     void SortById();
     void SortByStudentName();

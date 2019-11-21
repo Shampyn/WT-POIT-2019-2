@@ -16,10 +16,11 @@ public class XMLTeacherDAO implements TeacherDAO {
 
     private static String filepath = "Teachers.xml";
     private List<Teacher> teachersList;
+    private Teacher LoggedinTeacher;
 
 
     public  XMLTeacherDAO(){
-        teachersList = new ArrayList<Teacher>();
+        teachersList = new ArrayList<>();
         if(new File(filepath).exists()){
             try{
                 LoadTeachersFromFile();
@@ -81,6 +82,11 @@ public class XMLTeacherDAO implements TeacherDAO {
             }
         }
         SaveTeachersToFile();
+    }
+
+    @Override
+    public void ChooseTeacher(Teacher teacher) {
+        LoggedinTeacher = teacher;
     }
 
     @Override

@@ -27,13 +27,18 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public void ChooseStudent(Student student) {
+        studentDAO.ChooseStudent(student);
+    }
+
+    @Override
     public int GetMaxID() {
         return studentDAO.GetMaxID();
     }
 
     @Override
     public void SortById() {
-        studentDAO.SortById();;
+        studentDAO.SortById();
     }
 
     @Override
