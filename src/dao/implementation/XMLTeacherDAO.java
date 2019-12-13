@@ -5,6 +5,7 @@ import beans.Teacher;
 import dao.comparator.teacher.TeacherIdComparator;
 import dao.comparator.teacher.TeacherNameComparator;
 import dao.TeacherDAO;
+import service.XSDValidator;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -23,13 +24,19 @@ public class XMLTeacherDAO implements TeacherDAO {
         teachersList = new ArrayList<>();
         if(new File(filepath).exists()){
             try{
-                LoadTeachersFromFile();
+                if(new XSDValidator().ValidateXMLByXSD(new File(filepath), new File("Teacher.xsd"))){
+                    LoadTeachersFromFile();
+                }
+                else{
+                    System.out.println("Error Loading teachers");
+                }
             }
             catch (Exception e){
-
+                System.out.println("Error Loading teachers");
+            }
             }
         }
-    }
+
 
     private void LoadTeachersFromFile(){
         try{
@@ -65,13 +72,10 @@ public class XMLTeacherDAO implements TeacherDAO {
     }
 
     @Override
-    public void DeleteTeacher(int id) {
-        for (Teacher teacher : teachersList) {
-            if (teacher.getId() == id) {
-                teachersList.remove(teacher);
-            }
-            SaveTeachersToFile();
-        }
+    public void DeleteTeacher(Teacher teacher) {
+        teachersList.remove(teacher);
+        ChooseTeacher(null);
+        SaveTeachersToFile();
     }
 
     @Override
@@ -87,6 +91,11 @@ public class XMLTeacherDAO implements TeacherDAO {
     @Override
     public void ChooseTeacher(Teacher teacher) {
         LoggedinTeacher = teacher;
+    }
+
+    @Override
+    public Teacher GetLoggedInTeacher() {
+        return LoggedinTeacher;
     }
 
     @Override
