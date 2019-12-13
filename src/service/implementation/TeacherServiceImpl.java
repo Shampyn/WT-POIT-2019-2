@@ -17,8 +17,8 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public void DeleteTeacher(int id) {
-        teacherDAO.DeleteTeacher(id);
+    public void DeleteTeacher(Teacher teacher) {
+        teacherDAO.DeleteTeacher(teacher);
     }
 
     @Override
@@ -57,8 +57,13 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> ReadFaculty() {
+    public List<Teacher> ReadTeacher() {
         return teacherDAO.ReadTeacher();
+    }
+
+    @Override
+    public Teacher GetLoggedInTeacher() {
+        return teacherDAO.GetLoggedInTeacher();
     }
 
 

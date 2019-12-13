@@ -17,8 +17,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void DeleteStudent(int id) {
-        studentDAO.DeleteStudent(id);
+    public void DeleteStudent(Student student) {
+        studentDAO.DeleteStudent(student);
     }
 
     @Override
@@ -57,7 +57,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> ReadFaculty() {
+    public List<Student> ReadStudent() {
         return studentDAO.ReadStudent();
+    }
+
+    @Override
+    public Student GetLoggedInStudent() {        return studentDAO.GetLoggedInStudent();
     }
 }

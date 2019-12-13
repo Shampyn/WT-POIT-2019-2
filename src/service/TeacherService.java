@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TeacherService {
     void AddTeacher(Teacher teacher);
-    void DeleteTeacher(int id);
+    void DeleteTeacher(Teacher teacher);
     void UpdateTeacher(Teacher teacher);
     void ChooseTeacher(Teacher teacher);
     int GetMaxID();
@@ -14,5 +14,6 @@ public interface TeacherService {
     void SortByTeacherName();
     Teacher SearchById(int id);
     Teacher SearchByTeacherName(String name);
-    List<Teacher> ReadFaculty();
+    List<Teacher> ReadTeacher();
+    Teacher GetLoggedInTeacher();
 }

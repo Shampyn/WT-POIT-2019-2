@@ -4,6 +4,7 @@ import beans.Student;
 import dao.comparator.student.StudentIdComparator;
 import dao.comparator.student.StudentNameComparator;
 import dao.StudentDAO;
+import service.implementation.XSDValidator;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -22,13 +23,19 @@ public class XMLStudentDAO implements StudentDAO {
         studentsList = new ArrayList<>();
         if(new File(filepath).exists()){
             try{
-                LoadStudentsFromFile();
+                if(new XSDValidator().ValidateXMLByXSD(new File(filepath), new File("Student.xsd"))){
+                    LoadStudentsFromFile();
+                }
+                else{
+                    System.out.println("Error Loading students");
+                }
             }
             catch (Exception e){
-
+                System.out.println("Error Loading students");
+            }
             }
         }
-    }
+
 
     private void LoadStudentsFromFile(){
         try{
@@ -64,12 +71,9 @@ public class XMLStudentDAO implements StudentDAO {
     }
 
     @Override
-    public void DeleteStudent(int id) {
-        for (Student student : studentsList) {
-            if (student.getId() == id) {
-                studentsList.remove(student);
-            }
-        }
+    public void DeleteStudent(Student student) {
+        studentsList.remove(student);
+        ChooseStudent(null);
         SaveStudentsToFile();
     }
 
@@ -130,5 +134,10 @@ public class XMLStudentDAO implements StudentDAO {
     @Override
     public List<Student> ReadStudent() {
         return studentsList;
+    }
+
+    @Override
+    public Student GetLoggedInStudent() {
+        return LoggedinStudent;
     }
 }

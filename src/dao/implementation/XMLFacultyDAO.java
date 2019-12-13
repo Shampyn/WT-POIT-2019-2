@@ -4,6 +4,7 @@ import beans.Faculty;
 import dao.comparator.faculty.FacultyIdComparator;
 import dao.comparator.faculty.FacultyNameComparator;
 import dao.FacultyDAO;
+import service.implementation.XSDValidator;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -21,10 +22,15 @@ public class XMLFacultyDAO implements FacultyDAO {
         FacultyList = new ArrayList<Faculty>();
         if(new File(filepath).exists()){
             try{
-                LoadFacultiesFromFile();
+                if(new XSDValidator().ValidateXMLByXSD(new File(filepath), new File("Faculty.xsd"))){
+                    LoadFacultiesFromFile();
+                }
+                else{
+                    System.out.println("Error Loading faculties");
+                }
             }
             catch (Exception e){
-
+                System.out.println("Error Loading faculties");
             }
         }
     }

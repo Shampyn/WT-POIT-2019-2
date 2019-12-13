@@ -8,15 +8,13 @@ public class Student implements Serializable {
     private int id;
     private  String name;
     private  String surname;
-    private List<Faculty> faculty;
+
 
     public Student(){
-        this.faculty = new ArrayList<Faculty>();
-    };
 
+    };
     public Student(int id, String name, String surname){
-            this();
-            this.id = id;
+                    this.id = id;
             this.name = name;
             this.surname = surname;
     };
@@ -45,21 +43,6 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public void setFaculty(List<Faculty> faculty){
-        this.faculty = faculty;
-    }
-
-    public void addFaculty(Faculty faculty){
-        this.faculty.add(faculty);
-    }
-
-    public Faculty getfaculty(int index){
-        return faculty.get(index);
-    }
-
-    public List<Faculty> getfaculty(){
-        return this.faculty;
-    }
 
     @Override
     public boolean equals(Object o){
@@ -72,7 +55,7 @@ public class Student implements Serializable {
 
         Student that = (Student) o;
 
-        if(!name.equals(that.name) || !surname.equals(that.surname) || !faculty.equals(that.faculty) || !(id!=that.id)){
+        if(!name.equals(that.name) || !surname.equals(that.surname) || !(id!=that.id)){
             return false;
         }
         return true;
@@ -80,10 +63,10 @@ public class Student implements Serializable {
 
     @Override
     public int hashCode(){
-        return Objects.hash(id,name, surname, faculty);
+        return Objects.hash(id,name, surname);
     }
     @Override
     public String toString() {
-        return "id:"+id + " "+"name:"+" " + name +" surname:"+" "+ surname+" "+" faculty:"+faculty+'\n';
+        return "id:"+id + " "+"name:"+" " + name +" surname:"+" "+ surname+" "+'\n';
     }
 }

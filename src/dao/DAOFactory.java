@@ -24,13 +24,13 @@ public final class DAOFactory {
         return  XMLfacultyDAOImpl;
     }
     public TeacherDAO getXMLteacherDAO(){
-        if(XMLfacultyDAOImpl == null){
+        if(XMLteacherDAOImpl == null){
             XMLteacherDAOImpl = new XMLTeacherDAO();
         }
         return  XMLteacherDAOImpl;
     }
     public StudentDAO getXMLstudentDAO(){
-        if(XMLfacultyDAOImpl == null){
+        if(XMLstudentDAOImpl == null){
             XMLstudentDAOImpl = new XMLStudentDAO();
         }
         return  XMLstudentDAOImpl;

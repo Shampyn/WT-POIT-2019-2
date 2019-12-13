@@ -5,7 +5,7 @@ import beans.Teacher;
 import dao.comparator.teacher.TeacherIdComparator;
 import dao.comparator.teacher.TeacherNameComparator;
 import dao.TeacherDAO;
-import service.XSDValidator;
+import service.implementation.XSDValidator;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;

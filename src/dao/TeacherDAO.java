@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface TeacherDAO {
     void AddTeacher(Teacher teacher);
-    void DeleteTeacher(int id);
+    void DeleteTeacher(Teacher teacher);
     void UpdateTeacher(Teacher teacher);
     void ChooseTeacher(Teacher teacher);
+    Teacher GetLoggedInTeacher();
     int GetMaxID();
     void SortById();
     void SortByTeacherName();

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface StudentService {
     void AddStudent(Student student);
-    void DeleteStudent(int id);
+    void DeleteStudent(Student student);
     void UpdateStudent(Student student);
     void ChooseStudent(Student student);
     int GetMaxID();
@@ -14,5 +14,6 @@ public interface StudentService {
     void SortByStudentName();
     Student SearchById(int id);
     Student SearchByStudentName(String name);
-    List<Student> ReadFaculty();
+    List<Student> ReadStudent();
+    Student GetLoggedInStudent();
 }

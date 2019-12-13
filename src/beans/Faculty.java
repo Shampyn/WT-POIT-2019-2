@@ -3,26 +3,25 @@ package beans;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 public class Faculty implements Serializable {
     private int id;
     private String facultyName;
-    private Time time;
     private Teacher teacher;
-    private List<Student> student;
+    private Student student;
 
     public Faculty() {
-        student = new ArrayList<>();
+
     }
 
-    public Faculty(int id, String facultyName, Time time, Teacher teacher){
-        this();
+    public Faculty(int id, String facultyName, Teacher teacher, Student student){
+        this.student = student;
         this.teacher = teacher;
         this. facultyName = facultyName;
         this. id = id;
-        this.time = time;
     }
 
     public int getId() {
@@ -41,14 +40,6 @@ public class Faculty implements Serializable {
         return facultyName;
     }
 
-    public void setTime(Time time){
-        this.time = time;
-    }
-
-    public Time getTime(){
-        return time;
-    }
-
     public void setTeacher(Teacher teacher){
         this.teacher = teacher;
     }
@@ -57,19 +48,11 @@ public class Faculty implements Serializable {
         return teacher;
     }
 
-    public void addStudent(Student student){
-        this.student.add(student);
-    }
-
-    public Student getStudent(int index){
-        return this.student.get(index);
-    }
-
-    public void setStudent(List<Student> student){
+    public void setStudent(Student student){
         this.student = student;
     }
 
-    public List<Student> getStudent(){
+    public Student getStudent(){
         return this.student;
     }
 
@@ -84,7 +67,7 @@ public class Faculty implements Serializable {
 
         Faculty that = (Faculty) o;
 
-        if(!facultyName.equals(that.facultyName) || !time.equals(that.time) || !teacher.equals(that.teacher) ||  !student.equals(that.student) || !(id!=that.id)){
+        if(!facultyName.equals(that.facultyName) || !teacher.equals(that.teacher) ||  !student.equals(that.student) || !(id!=that.id)){
             return false;
         }
         return true;
@@ -92,13 +75,13 @@ public class Faculty implements Serializable {
 
     @Override
     public int hashCode(){
-        return Objects.hash(id,facultyName, time, teacher,student);
+        return Objects.hash(id,facultyName, teacher,student);
     }
 
     @Override
     public String toString() {
 
-        return "id:"+id + " Faculty name:" + facultyName +" "+" Time start:"+ time+" "+"Teacher:"+teacher+"Student:"+student+'\n';
+        return "id:"+id + " Faculty name:" + facultyName +" "+"Teacher:"+teacher.toString()+"Student:"+student.toString()+'\n';
     }
 
 }
