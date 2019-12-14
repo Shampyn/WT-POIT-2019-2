@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.4" class="java.beans.XMLDecoder">
+    <object class="beans.Faculty">
+        <void property="facultyName">
+            <string>DBUpdates</string>
+        </void>
+        <void property="id">
+            <int>1</int>
+        </void>
+        <void property="student">
+            <object class="beans.Student">
+                <void property="id">
+                    <int>1</int>
+                </void>
+                <void property="name">
+                    <string>Pavel</string>
+                </void>
+                <void property="surname">
+                    <string>Razum</string>
+                </void>
+            </object>
+        </void>
+        <void property="teacher">
+            <object class="beans.Teacher">
+                <void property="id">
+                    <int>1</int>
+                </void>
+                <void property="name">
+                    <string>Galina</string>
+                </void>
+                <void property="surname">
+                    <string>Lypec</string>
+                </void>
+            </object>
+        </void>
+    </object>
+</java>

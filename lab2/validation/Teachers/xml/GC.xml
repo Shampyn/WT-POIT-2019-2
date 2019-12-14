@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.4" class="java.beans.XMLDecoder">
+    <object class="beans.Teacher">
+        <void property="id">
+            <int>1</int>
+        </void>
+        <void property="name">
+            <string>Galina</string>
+        </void>
+        <void property="surname">
+            <string>Lypec</string>
+        </void>
+    </object>
+</java>
